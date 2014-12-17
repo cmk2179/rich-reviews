@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Rich Reviews v1.5.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-17 07:14+0100\n"
-"PO-Revision-Date: 2014-12-17 08:05+0100\n"
+"PO-Revision-Date: 2014-12-17 08:11+0100\n"
 "Last-Translator: ckjaersig <ckjaersig+wp-test@gmail.com>\n"
 "Language-Team: \n"
 "Language: da_DK\n"
@@ -17,7 +17,6 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /Users/chriskjaersig/Private/Github/rich-reviews\n"
 
 #: /Users/chriskjaersig/Private/Github/rich-reviews/lib/rich-reviews-admin.php:395
 #: /Users/chriskjaersig/Private/Github/rich-reviews/lib/rich-reviews-admin.php:457
