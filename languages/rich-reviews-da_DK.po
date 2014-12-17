@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Rich Reviews v1.5.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-17 07:14+0100\n"
-"PO-Revision-Date: 2014-12-17 08:11+0100\n"
+"PO-Revision-Date: 2014-12-17 08:17+0100\n"
 "Last-Translator: ckjaersig <ckjaersig+wp-test@gmail.com>\n"
 "Language-Team: \n"
 "Language: da_DK\n"
@@ -18,28 +18,20 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-Basepath: .\n"
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/lib/rich-reviews-admin.php:395
-#: /Users/chriskjaersig/Private/Github/rich-reviews/lib/rich-reviews-admin.php:457
 msgid "You do not have sufficient permissions to access this page."
 msgstr "﻿Du har ikke tilstrækkelige tilladelser til at se denne side."
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/lib/rich-reviews-widget.php:20
 msgid "Atleast one of the four widget variables was not set."
 msgstr "Mindst én af de fire widget variabler blev ikke angivet."
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/lib/rich-reviews-widget.php:61
 msgid "Title:"
 msgstr "Titel:"
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:145
-#, php-format
 msgid ""
 "Review with internal ID %s from the reviewer %s, whose IP is %s has been "
 "approved."
 msgstr "Anmeldelse med internt ID %s, fra %s med IP'en %s, er blevet godkendt."
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:150
-#, php-format
 msgid ""
 "Review with internal ID %s from the reviewer %s, whose IP is %s has been set as "
 "a pending review."
@@ -47,33 +39,28 @@ msgstr ""
 "Anmeldelse med internt ID %s, fra %s med IP'en %s, er sat til afventer "
 "godkendelse."
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:155
-#, php-format
 msgid ""
 "Review with internal ID %s from the reviewer %s, whose IP is %s has been "
 "deleted."
 msgstr "Anmeldelse med internt ID %s, fra %s med IP'en %s, er blevet slettet."
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:257
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:269
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:273
 msgid "Name"
 msgstr "Navn"
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:261
 msgid "Email"
 msgstr "Email"
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:401
-#, php-format
 msgid "Overall rating: %s based on %s reviews"
 msgstr "Rank: %s (%s anmeldelser)"
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:406
-#, php-format
 msgid "Overall rating: %s out of 5, based on %s reviews"
 msgstr "Rank: %s/5 (%s anmeldelser)"
 
-#: /Users/chriskjaersig/Private/Github/rich-reviews/rich-reviews.php:579
 msgid "Supported by"
 msgstr "Supporteret af "
+
+msgid "Rating"
+msgstr "Rank"
+
+msgid "Review Content"
+msgstr "Indhold"

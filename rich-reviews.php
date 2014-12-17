@@ -263,11 +263,11 @@ class RichReviews {
 			$output .= '			<td class="rr_form_input"><input class="rr_small_input" type="text" name="rTitle" value="' . $rTitle . '" /></td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
-			$output .= '			<td class="rr_form_heading rr_required">' . __('Name', 'rich-reviews') . '</td>';
+			$output .= '			<td class="rr_form_heading rr_required">' . __('Rating', 'rich-reviews') . '</td>';
 			$output .= '			<td class="rr_form_input">' . $this->star_rating_input() . '</td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
-			$output .= '			<td class="rr_form_heading rr_required">' . __('Name', 'rich-reviews') . '</td>';
+			$output .= '			<td class="rr_form_heading rr_required">' . __('Review Content', 'rich-reviews') . '</td>';
 			$output .= '			<td class="rr_form_input"><textarea class="rr_large_input" name="rText" rows="10">' . $rText . '</textarea></td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
