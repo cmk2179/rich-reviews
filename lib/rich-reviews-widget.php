@@ -17,7 +17,7 @@ class RichReviewsShowWidget extends WP_Widget {
      */
     function __construct() {
         if (is_null($this->name) || is_null($this->classname) || is_null($this->description) || is_null($this->slug)) {
-            echo '<div class="error">' . __('Atleast one of the four widget variables was not set.') . '</div>';
+            echo '<div class="error">' . __('Atleast one of the four widget variables was not set.', 'rich-reviews') . '</div>';
         }
         $widget_ops = array(
             'classname' => __($this->classname),
@@ -58,7 +58,7 @@ class RichReviewsShowWidget extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, array( 'title' => '') );
 		$title = strip_tags($instance['title']);
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'rich-reviews'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
         
         <?php

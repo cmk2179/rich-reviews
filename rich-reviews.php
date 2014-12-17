@@ -142,19 +142,19 @@ class RichReviews {
 		$output = 'Something went wrong! Please report this error.';
 		switch ($status) {
 			case 'approve':
-				$output = 'Review with internal ID ' . $idid . ' from the reviewer ' . $this->nice_output($rName) . ', whose IP is ' . $rIP . ' has been approved.<br>';
+                $output = sprintf(__('Review with internal ID %s from the reviewer %s, whose IP is %s has been approved.', 'rich-reviews'), $idid, $this->nice_output($rName), $rIP) . '<br/>';
 				$wpdb->update($this->sqltable, array('review_status' => '1'), array('id' => $idid));
 				break;
 			case 'limbo':
-				$output = 'Review with internal ID ' . $idid . ' from the reviewer ' . $this->nice_output($rName) . ', whose IP is ' . $rIP . ' has been set as a pending review.<br>';
+                $output = sprintf(__('Review with internal ID %s from the reviewer %s, whose IP is %s has been set as a pending review.', 'rich-reviews'), $idid, $this->nice_output($rName), $rIP) . '<br/>';
 				$wpdb->update($this->sqltable, array('review_status' => '0'), array('id' => $idid));
 				break;
 			case 'delete':
-				$output = 'Review with internal ID ' . $idid . ' from the reviewer ' . $this->nice_output($rName) . ', whose IP is ' . $rIP . ' has been deleted.<br>';
+                $output = sprintf(__('Review with internal ID %s from the reviewer %s, whose IP is %s has been deleted.', 'rich-reviews'), $idid, $this->nice_output($rName), $rIP) . '<br/>';
 				$wpdb->query("DELETE FROM $this->sqltable WHERE id=\"$idid\"");
 				break;
 		}
-		return __($output, 'rich-reviews');
+		return $output;
 	}
 
 	function star_rating_input() {
@@ -165,7 +165,7 @@ class RichReviews {
 			<span class="rr_star glyphicon glyphicon-star-empty" id="rr_star_4"></span>
 			<span class="rr_star glyphicon glyphicon-star-empty" id="rr_star_5"></span>
 		</div>';
-		return __($output, 'rich-reviews');
+		return $output;
 	}
 
 	function shortcode_reviews_form($atts) {
@@ -251,11 +251,11 @@ class RichReviews {
 			$output .= '	<input type="hidden" name="rRating" id="rRating" value="0" />';
 			$output .= '	<table class="form_table">';
 			$output .= '		<tr class="rr_form_row">';
-			$output .= '			<td class="rr_form_heading rr_required">Name</td>';
+			$output .= '			<td class="rr_form_heading rr_required">' . __('Name', 'rich-reviews') . '</td>';
 			$output .= '			<td class="rr_form_input"><input class="rr_small_input" type="text" name="rName" value="' . $rName . '" /></td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
-			$output .= '			<td class="rr_form_heading">Email</td>';
+			$output .= '			<td class="rr_form_heading">' . __('Email', 'rich-reviews') . '</td>';
 			$output .= '			<td class="rr_form_input"><input class="rr_small_input" type="text" name="rEmail" value="' . $rEmail . '" /></td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
@@ -263,11 +263,11 @@ class RichReviews {
 			$output .= '			<td class="rr_form_input"><input class="rr_small_input" type="text" name="rTitle" value="' . $rTitle . '" /></td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
-			$output .= '			<td class="rr_form_heading rr_required">Rating</td>';
+			$output .= '			<td class="rr_form_heading rr_required">' . __('Name', 'rich-reviews') . '</td>';
 			$output .= '			<td class="rr_form_input">' . $this->star_rating_input() . '</td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
-			$output .= '			<td class="rr_form_heading rr_required">Review Content</td>';
+			$output .= '			<td class="rr_form_heading rr_required">' . __('Name', 'rich-reviews') . '</td>';
 			$output .= '			<td class="rr_form_input"><textarea class="rr_large_input" name="rText" rows="10">' . $rText . '</textarea></td>';
 			$output .= '		</tr>';
 			$output .= '		<tr class="rr_form_row">';
@@ -278,7 +278,7 @@ class RichReviews {
 			$output .= '</form>';
 		}
 		$this->render_custom_styles();
-		return __($output, 'rich-reviews');
+		return $output;
 	}
 
 	function shortcode_reviews_show($atts) {
@@ -348,7 +348,7 @@ class RichReviews {
 		}
 		$output .= $this->print_credit();
 		$this->render_custom_styles();
-		return __($output, 'rich-reviews');
+		return $output;
 	}
 
 	function shortcode_reviews_show_all() {
@@ -381,6 +381,7 @@ class RichReviews {
 		if ($this->options->get_option('snippet_stars')) {
 			$stars = '';
 			$star_count = 0;
+			$rating = $averageRating;
 			//dump($averageRating, 'AVE:');
 			while($averageRating >= 1) {
 				$stars = $stars . '&#9733';
@@ -394,12 +395,16 @@ class RichReviews {
 				$star_count++;
 				//dump($star_count, 'STAR COUNT:');
 			}
-			$output = '<div class="hreview-aggregate">Overall rating: <span class="stars">' . $stars . '</span> based on <span class="votes">' . $approvedReviewsCount . '</span> reviews</div>';
+            $output = '<div  itemscope itemtype="http://data-vocabulary.org/Review-aggregate">' . sprintf(__('Overall rating: %s based on %s reviews', 'rich-reviews'), '<span class="stars">' . $stars . '<meta itemprop="rating" content="' . $rating . '" /></span>', '<span itemprop="votes">' . $approvedReviewsCount . '</span>') . '</div>';
+			//$output = '<div class="hreview-aggregate">' . __('Overall rating:', 'rich-reviews') . ' <span class="stars">' . $stars . '</span> ' . __('based on') . '<span class="votes">' . $approvedReviewsCount . '</span> ' . _('reviews') . '<span class="rating" style="display: none">' . $rating . '</span></div>';
 			$this->render_custom_styles();
 		}
-		else {$output = '<div class="hreview-aggregate">Overall rating: <span class="rating">' . $averageRating . '</span> out of 5 based on <span class="votes">' . $approvedReviewsCount . '</span> reviews</div>';}
+		else {
+            $output = '<div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">' . sprintf(__('Overall rating: %s out of 5, based on %s reviews', 'rich-reviews'), '<span class="rating">' . $averageRating . '<meta itemprop="rating" content="' . $averageRating . '" /></span>', '<span itemprop="votes">' . $approvedReviewsCount . '</span>') . '</div>';
+            //$output = '<div class="hreview-aggregate">' . __('Overall rating:', 'rich-reviews') . ' <span class="rating">' . $averageRating . '</span>' . _('out of 5 based on') . ' <span class="votes">' . $approvedReviewsCount . '</span> ' . _('reviews') . '</div>';
+        }
 
-		return __($output, 'rich-reviews');
+		return $output;
 	}
 
 	function display_admin_review($review, $status = 'limbo') {
@@ -455,7 +460,7 @@ class RichReviews {
 					<div class="rr_review_text">' . $rText . '</div>
 				</td>
 			</tr>';
-		return __($output, 'rich-reviews');
+		return $output;
 	}
 
 	function display_review($review) {
@@ -566,13 +571,13 @@ class RichReviews {
 
 	function print_credit() {
 		$permission = $this->rr_options['credit_permission'];
-		$output = "";
+		$output = '';
 		if ($permission) {
-			$output = '<div class="credit-line">Supported By: <a href="http://nuancedmedia.com/" rel="nofollow"> Nuanced Media</a>';
+			$output = '<div class="credit-line">' . __('Supported by', 'rich-reviews') . ': <a href="http://nuancedmedia.com/" rel="nofollow">Nuanced Media</a>';
 			$output .= '</div>' . PHP_EOL;
 			$output .= '<div class="clear"></div>' . PHP_EOL;
 		}
-		return __($output, 'rich-reviews');
+		return $output;
 	}
 
 	function on_load() {

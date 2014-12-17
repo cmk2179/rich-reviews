@@ -392,7 +392,7 @@ class RichReviewsAdmin {
 			return;
 		}
 		if (!current_user_can('manage_options')) {
-			wp_die( __('You do not have sufficient permissions to access this page.') );
+			wp_die( __('You do not have sufficient permissions to access this page.', 'rich-reviews') );
 		}
 		?>
 		<form id="rr-admin-options-form" action="" method="post">
@@ -454,7 +454,7 @@ class RichReviewsAdmin {
 			return;
 		}
 		if (!current_user_can('manage_options')) {
-			wp_die( __('You do not have sufficient permissions to access this page.') );
+			wp_die( __('You do not have sufficient permissions to access this page.', 'rich-reviews') );
 		}
 		$view = new RRAdminAddEdit($this->parent);
 	}
